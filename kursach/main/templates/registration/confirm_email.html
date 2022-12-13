@@ -1,0 +1,56 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    Выход
+{% endblock %}
+
+{% block head %}
+    <style>
+        ul {
+          list-style-type: none;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .features {
+            display: flex;
+            flex-flow: column;
+            align-self: center;
+            font-family: Montserrat;
+            width: 50%;
+            margin-top: 150px;
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(12px);
+        }
+
+        .features * {
+            align-self: center;
+            color: #fff;
+        }
+
+        .features h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 48px;
+        }
+
+        .features p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            color: #ccc;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Для завершения регистрации верифицируйте свою почту</h1>
+        <p>Письмо отправлено на почту</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    демо
+{% endblock %}
+
+{% block head %}
+  <style>
+        ul {
+          list-style-type: none;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .features {
+            display: flex;
+            flex-flow: column;
+            align-self: center;
+            font-family: Open Sans;
+            font-stretch: expanded;
+            margin-top: 70px;
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(12px);
+        }
+
+        .features * {
+            align-self: center;
+        }
+
+        .features h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 48px;
+            color: #D9D4D6;
+            margin-bottom: 25px;
+        }
+
+        .features form {
+            display: flex;
+            flex-flow: column;
+            width: 100%;
+            color: #D9D4D6;
+        }
+
+        .features form ul {
+            width: 70%;
+            color: #fff;
+        }
+
+        .features form ul li input {
+            width: 100%;
+            color: #000;
+            box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .features form * {
+            padding: 10px;
+        }
+
+        .features form button, .btn {
+            margin-top: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+            border-radius: 1px;
+            font-weight: 500;
+        }
+
+        .features .passres {
+            margin-top: 10px;
+            text-decoration: none;
+            transition: transform .25s ease;
+            color: #D9D4D6;
+        }
+
+        .features .passres:hover {
+            transform: scale(1.05);
+            color: #B8B8B8;
+            cursor: pointer;
+
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+     <div class="features">
+        <h1>Заявка на тариф</h1>
+        <form action="{% url 'demo' %}" method="post">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light">Зарегистрировать</button>
+        </form>
+         {{ answ }}
+    </div>
+{% endblock %}

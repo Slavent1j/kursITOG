@@ -1,0 +1,67 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing/Next</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    {% block head %}
+    {% endblock %}
+</head>
+<header>
+  <nav>
+      <a style="text-decoration: none; color: #363030">Добро пожаловать, {{ user }}</a>
+      <a href="{% url 'login' %}" style="text-decoration: none; color: #363030">Личный кабинет</a>
+    <a href="{% url 'contacts' %}" style="text-decoration: none; color: #363030" >Контакты</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'demo' %}" style="text-decoration: none; color: #363030" >Демо</a>
+      {% else %}
+      {% endif %}
+  </nav>
+    <div class="logo"><a href="{% url 'home' %} " style="text-decoration: none; color: #363030">Billing/Next</a></div>
+</header>
+<main>
+    {% block content %}
+<div class="info">
+<h2>Billing/Next - Служба биллинга</h2>
+    <a>Профессиональный инструмент для организации Вашего интернет-бизнеса, позволяющий автоматизировано осуществлять продажи и вести подробный учет клиентов.</a>
+    <h3>Основные возможности:</h3>
+   <ul>
+  <li>Поддержка автоматического выставления счетов.</li>
+  <li>Возможность смены тарифного плана.</li>
+  <li>Легкий и интуитивно понятный интерфейс</li>
+  <li>Мгновенная техническая поддержка</li>
+</ul>
+</div>
+    <a class="button" href="{% url 'demo' %}"><button type="button" class="btn btn-outline-light">Попробовать Демоверсию</button></a>
+    {% endblock %}
+</main>
+ <footer class="footer1">
+        <div class="footer-content">
+            <div class="contacts">
+                <ul>
+
+                    <li>ООО "BillingNext"</li>
+                </ul>
+            </div>
+            <div class="social">
+
+                <ul>
+                     <li>686723, г. Санкт-Петербург, Невский пр., 40</li>
+                    <li>для вопросов и предложений</li>
+                    <li>support@BillingNext.ru</li>
+                </ul>
+            </div>
+            <div class="dev">
+
+                <ul>
+                    <li>+7 (905) 245-69-05</li>
+                    <li>с 10:00 до 21:00 с понедельника по пятницу</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

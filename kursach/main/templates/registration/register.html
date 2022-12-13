@@ -1,0 +1,128 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block head %}
+    <style>
+        ul {
+          list-style-type: none;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .features {
+            display: flex;
+            flex-flow: column;
+            align-self: center;
+            font-family: Open Sans;
+            margin-top: 50px;
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(12px);
+        }
+
+        .features * {
+            align-self: center;
+        }
+
+        .features h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 48px;
+            color: #D9D4D6;
+            margin-bottom: 25px;
+        }
+
+        .features form {
+            display: flex;
+            flex-flow: column;
+            width: 100%;
+        }
+
+        .features form ul {
+            width: 70%;
+        }
+
+        .features form ul li input {
+            width: 100%;
+            color: #000;
+            box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            border: none;
+        }
+
+        .features form * {
+            padding: 10px;
+            color: #D9D4D6;
+        }
+
+        .features form button {
+            margin-top: 20px;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            padding-left: 100px;
+            padding-right: 100px;
+            border-radius: 1px;
+            font-weight: 500;
+            color: #D9D4D6;
+        }
+
+        .features a {
+            margin-top: 10px;
+            text-decoration: none;
+            transition: transform .25s ease;
+            color: #D9D4D6;
+        }
+
+        .features a:hover {
+            transform: scale(1.05);
+            color: #D9D4D6;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Регистрация на сайте</h1>
+
+        {% if form.errors %}
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <div class="alert alert-warning" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'register' %}" method="post">
+            <ul>
+                <li>Логин</li>
+                <li>
+                    {{ form.username }}
+                </li>
+                <li>Email</li>
+                <li>
+                    {{ form.email }}
+                </li>
+                <li>Пароль</li>
+                <li>
+                    {{ form.password1 }}
+                </li>
+                <li>Повтор пароля</li>
+                <li>
+                    {{ form.password2 }}
+                </li>
+            </ul>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light">РЕГИСТРАЦИЯ</button>
+        </form>
+    </div>
+{% endblock %}
